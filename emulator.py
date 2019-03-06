@@ -10,7 +10,7 @@ def emulator(function_name, route, port):
     app = Flask(__name__)
     function = getattr(__import__('main', fromlist=[function_name]), function_name)
     new_func = _add_request(function)
-    app.add_url_rule(f'/{route}', view_func=new_func)
+    app.add_url_rule(f'/{route}', view_func=new_func, methods=['GET', 'POST', 'PUT', 'OPTIONS'])
     app.run(port=port)
 
 
